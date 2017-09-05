@@ -22,7 +22,7 @@ class  MysqlConn{
 			$sql = "INSERT INTO $tableName  $columns VALUES $data";
 			//echo $sql;
 		 	$queryStatus = $this->dbConn->query($sql);
-		 	echo "query status = ", $queryStatus;	
+		 	//echo "query status = ", $queryStatus;	
 		 	if ($queryStatus){
 				return 1; 		 	
 		 	}		
@@ -39,7 +39,7 @@ class  MysqlConn{
 				while($row = $result->fetch_assoc()){
 					array_push($values, $row);
 				}
-				return $values;
+				return json_encode($values);
 			}
 			return 0;	
 		}						
@@ -61,7 +61,7 @@ class  MysqlConn{
 			if ($delStatus){
 				return 1;
 			}
-			return 0
+			return 0;
 		}		
 		
 		
@@ -73,5 +73,5 @@ class  MysqlConn{
 
 
 //$mysqlTest = new MysqlConn($database="iot", $password = "");
-//$mysqlTest->deleteTableValue($tableName = "iotTable");
+//echo ($mysqlTest->readTable($tableName = "iotTable"));
 ?>
